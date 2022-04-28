@@ -117,7 +117,7 @@ classdef test_cases_1a < matlab.unittest.TestCase
 
             [z,x,pi,ind,exitflag] = simplex(A,b,c,m,n,Bmatrix,indices);
 
-            testCase.verifyEqual(z,-875, RelTol = 1e-5);
+            testCase.verifyEqual(z,-965, RelTol = 1e-5);
             testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
         end
     end
