@@ -46,6 +46,26 @@ classdef test_cases_1c < matlab.unittest.TestCase
             testCase.verifyEqual(exitflag,-1, RelTol = 1e-5);
         end
 
+        function another_cocktail_unbounded(testCase)
+            % Unbounded cocktail problem as seem in tutorial
+            m = 3;
+            n = 5;
+            
+            A = [0.08 0.06 -1 0 0;
+                 1 0 0 -1 0;
+                 0 1 0 0 -1];
+            
+            c = [-2 -1.25 0 0 0]';
+            
+            b = [12 60 60]';
+
+            [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
+            
+            % Don't think we need all return values to be exact here as
+            % long as exitflag = -1. But why not...
+            testCase.verifyEqual(exitflag,-1, AbsTol = 1e-5);
+        end
+
         function Assignment_1_Q3(testCase)
             m = 3;
             n = 6;
