@@ -1,0 +1,4 @@
+# Protection for if assignment files are accidentally committed.
+simplex.m
+fullsimplex.m
+rsm.m
