@@ -87,66 +87,47 @@ classdef test_cases_1c < matlab.unittest.TestCase
             testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
         end
 
-%         function Degen(testCase)
-%             % Idk if this is right... from slides...
-% 
-%             m = 3;
-%             n = 4;
-%             
-%             A = [0.25 -8 -1 9;
-%                  0.5 -12 -0.5 3;
-%                  0 0 1 0];
-%             
-%             b = [0 0 1].';
-%             
-%             c = [-0.75,20,-0.5,6].';
-% 
-%             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
-% 
-%             testCase.verifyEqual(z,-5/4, RelTol = 1e-5);
-% %             testCase.verifyEqual(x,[7/5,1/5].', RelTol = 1e-5);
-% %             testCase.verifyEqual(pi,[-1/5,2/5].', RelTol = 1e-5);
-% %             testCase.verifyEqual(ind,[3,5].', RelTol = 1e-5);
-%             testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
-%         end
+        function Degen(testCase)
+             % Idk if this is right... from slides...
+ 
+            m = 3;
+            n = 5;
+            
+            A = [0.08 0.06 1 0 0;
+                 1 0 0 1 0;
+                 0 1 0 0 1];
+            
+            c = [-7 -6 0 0 0]';
+            
+            b = [10 125 120]';
+            
+            [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
+            
+            % Don't think we need all return values to be exact here as
+            % long as exitflag = -1. But why not...
+            testCase.verifyEqual(z,-965, RelTol = 1e-5);
+            testCase.verifyEqual(x,[35,90,120].', RelTol = 1e-5);
+            testCase.verifyEqual(pi,[-87.5, 0, -0.75].', RelTol = 1e-5);
+            testCase.verifyEqual(ind,[1, 4, 2].', RelTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+         end
 
-%         function Degen2(testCase)
-%             m = 3;
-%             n = 2;
-% 
-%             A = [0.08 0.06;
-%                  1 0;
-%                  0 1];
-% 
-%             b = [10 125 120].';
-% 
-%             c = [-7 -6].';
-% 
-%             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
-% 
-%             testCase.verifyEqual(z,-875, RelTol = 1e-5);
-%             testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
-%         end
-
-%         function DegenAssignment(testCase)
-%             % Primal problem from assignment
-%             m = 5;
-%             n = 2;
-% 
-%             A = [1 2;
-%                 2 1;
-%                 3 4;
-%                 1 -1;
-%                 -1 2];
-% 
-%             b = ones(5,1);
-% 
-%             c = [4 6].';
-% 
-%             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
-% 
-%             testCase.verifyEqual(z,1.6, RelTol = 1e-5);
-%             testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
-%         end
+         function DegenAssignment(testCase)
+             % Primal problem from assignment
+             m = 2;
+             n = 5;
+ 
+             A = [1 2 3 1 -1;
+                 2 1 4 -1 2];
+ 
+             b = [4 6].';
+ 
+             c = [1 1 1 1 1].';
+ 
+             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
+ 
+             testCase.verifyEqual(z,1.6, RelTol = 1e-5);
+             testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+         end
     end
 end
