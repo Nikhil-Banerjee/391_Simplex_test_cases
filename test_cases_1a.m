@@ -93,8 +93,6 @@ classdef test_cases_1a < matlab.unittest.TestCase
 
         function Cocktail_degenerate(testCase)
             % From slides
-            % Unsure if this is right...
-            % I haven't got it to work on my 1a yet plz check for mistakes.
 
             m = 3;
             n = 5;

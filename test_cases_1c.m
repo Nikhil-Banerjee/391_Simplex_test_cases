@@ -107,6 +107,28 @@ classdef test_cases_1c < matlab.unittest.TestCase
             testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
         end
 
+        function Assignment_1_Q4_redundant_constraint(testCase)
+            % I don't pass this :(
+            m = 3;
+            n = 5;
+            
+            A = [1 2 3 1 -1;
+                 2 1 4 -1 2;
+                 -2 -1 -4 1 -2];
+            
+            c = [1 1 1 1 1]';
+            
+            b = [4 6 -6]';
+
+            [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
+
+            testCase.verifyEqual(z,8/5, RelTol = 1e-5);
+%             testCase.verifyEqual(x,[7/5,1/5].', RelTol = 1e-5);
+%             testCase.verifyEqual(pi,[-1/5,2/5].', RelTol = 1e-5);
+%             testCase.verifyEqual(ind,[3,5].', RelTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+        end
+
         function Degen(testCase)
              % Idk if this is right... from slides...
  
@@ -130,10 +152,10 @@ classdef test_cases_1c < matlab.unittest.TestCase
             testCase.verifyEqual(pi,[-87.5, 0, -0.75].', RelTol = 1e-5);
             testCase.verifyEqual(ind,[1, 4, 2].', RelTol = 1e-5);
             testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
-         end
+        end
 
-         function DegenAssignment(testCase)
-             % Primal problem from assignment
+         function Assignment_1_Q5(testCase)
+             % problem from assignment
              m = 2;
              n = 5;
  
@@ -147,6 +169,38 @@ classdef test_cases_1c < matlab.unittest.TestCase
              [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
  
              testCase.verifyEqual(z,1.6, RelTol = 1e-5);
+             testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+         end
+
+         function Assignment_1_Q5_Primal(testCase)
+             % Primal problem from assignment adjusted to have equality
+             % constraints.
+             % This one may not be possible to solve wihtout
+             % something fancy like bland's rule or pertubing RHS (which
+             % Andy has said we don't need). 
+             % On the other hand the test may just be wrong.
+             % I get -1.5 as my optimal value.
+             %
+             % Supposed optimal x values in order:
+             % [-0.2 0.4 0.4 1 0 1.6 0]
+            m = 5;
+            n = 7;
+
+            A = [1 2;
+                 2 1;
+                 3 4;
+                 1 -1;
+                 -1 2];
+
+            A = [A eye(5)];
+
+            b = ones(5,1);
+
+            c = [-4 -6 0 0 0 0 0].';
+
+            [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
+ 
+             testCase.verifyEqual(z,-1.6, RelTol = 1e-5);
              testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
          end
     end
