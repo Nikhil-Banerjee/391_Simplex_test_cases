@@ -4,15 +4,15 @@ classdef test_cases_1a < matlab.unittest.TestCase
             % As seen in tutorial.
             m = 3;
             n = 5;
-            
+
             A = [0.08 0.06 1 0 0;
-                 1 0 0 1 0;
-                 0 1 0 0 1];
-            
+                1 0 0 1 0;
+                0 1 0 0 1];
+
             c = [-2 -1.25 0 0 0]';
-            
+
             b = [12 120 120]';
-            
+
             indices = [3 4 5]';
 
             for j = 1:m
@@ -20,7 +20,7 @@ classdef test_cases_1a < matlab.unittest.TestCase
                     Bmatrix(i,j) = A(i, indices(j));
                 end
             end
-            
+
             [z,x,pi,ind,exitflag] = simplex(A,b,c,m,n,Bmatrix,indices);
 
             testCase.verifyEqual(z,-290, RelTol = 1e-5);
@@ -34,17 +34,17 @@ classdef test_cases_1a < matlab.unittest.TestCase
             % Unbounded cocktail problem as seem in tutorial
             m = 3;
             n = 5;
-            
+
             A = [0.08 0.06 -1 0 0;
-                 1 0 0 -1 0;
-                 0 1 0 0 -1];
-            
+                1 0 0 -1 0;
+                0 1 0 0 -1];
+
             c = [-2 -1.25 0 0 0]';
-            
+
             b = [12 120 120]';
-            
+
             indices = [3 4 5]';
-            
+
             for j = 1:m
                 for i = 1:m
                     Bmatrix(i,j) = A(i, indices(j));
@@ -52,7 +52,7 @@ classdef test_cases_1a < matlab.unittest.TestCase
             end
 
             [z,x,pi,ind,exitflag] = simplex(A,b,c,m,n,Bmatrix,indices);
-            
+
             % Don't think we need all return values to be exact here as
             % long as exitflag = -1. But why not...
             testCase.verifyEqual(z,0, RelTol = 1e-5);
@@ -65,17 +65,17 @@ classdef test_cases_1a < matlab.unittest.TestCase
         function Assignment_1_Q3(testCase)
             m = 3;
             n = 6;
-            
+
             A = [1 1 1 1 0 0;
-                 1 2 2 -1 1 0;
-                 1 2 1 0 -1 1];
-            
+                1 2 2 -1 1 0;
+                1 2 1 0 -1 1];
+
             c = [15 10 -10 1 2 3]';
-            
+
             b = [4 4 4]';
-            
+
             indices = [4 5 6].';
-            
+
             for j = 1:m
                 for i = 1:m
                     Bmatrix(i,j) = A(i, indices(j));
@@ -83,7 +83,7 @@ classdef test_cases_1a < matlab.unittest.TestCase
             end
 
             [z,x,pi,ind,exitflag] = simplex(A,b,c,m,n,Bmatrix,indices);
-            
+
             testCase.verifyEqual(z,-64/3, RelTol = 1e-5);
             testCase.verifyEqual(x,[4/3,8/3,4/3].', RelTol = 1e-5);
             testCase.verifyEqual(pi,[-11/3, -14/3, 3].', RelTol = 1e-5);
@@ -98,8 +98,8 @@ classdef test_cases_1a < matlab.unittest.TestCase
             n = 5;
 
             A = [0.08 0.06 1 0 0;
-                 1 0 0 1 0;
-                 0 1 0 0 1];
+                1 0 0 1 0;
+                0 1 0 0 1];
 
             b = [10 125 120].';
 
