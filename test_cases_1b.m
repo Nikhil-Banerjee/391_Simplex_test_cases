@@ -305,5 +305,29 @@ classdef test_cases_1b < matlab.unittest.TestCase
             testCase.verifyEqual(ind,[3,5,6].', RelTol = 1e-5);
             testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
         end
+
+        function Redundant_Online_Example(testCase)
+            m = 3;
+            n = 4;
+
+            A = [1 2 0 1;
+                2 1 1 0;
+                -1 4 -2 3];
+
+            b = [20 10 40].';
+
+            c = [1 4 1 2].';
+
+            [z,x,pi,ind,exitflag] = fullsimplex(A,b,c,m,n);
+
+            testCase.verifyEqual(z,35, RelTol = 1e-5); % not too sure about the answers tbh
+            testCase.verifyEqual(x,[5,0, 15].', RelTol = 1e-5);
+            % testCase.verifyEqual(pi,[-7,5,3].', RelTol = 1e-5); % ceebs
+            % calculating this
+            testCase.verifyEqual(ind,[1,6,4].', RelTol = 1e-5); % online indices are
+            % 4, 1, 7 I'm guessing their method might be different? 6 and 7
+            % are artificial anyway so 6 or 7 doesn't matter?
+            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+        end
     end
 end
