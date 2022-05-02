@@ -23,11 +23,11 @@ classdef test_cases_1a < matlab.unittest.TestCase
 
             [z,x,pi,ind,exitflag] = simplex(A,b,c,m,n,Bmatrix,indices);
 
-            testCase.verifyEqual(z,-290, RelTol = 1e-5);
-            testCase.verifyEqual(x,[40,120,80].', RelTol = 1e-5);
-            testCase.verifyEqual(pi,[-125/6, -1/3, 0].', RelTol = 1e-5);
-            testCase.verifyEqual(ind,[2,1,5].', RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+            testCase.verifyEqual(z,-290, AbsTol = 1e-5);
+            testCase.verifyEqual(x,[40,120,80].', AbsTol = 1e-5);
+            testCase.verifyEqual(pi,[-125/6, -1/3, 0].', AbsTol = 1e-5);
+            testCase.verifyEqual(ind,[2,1,5].', AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         end
 
         function cocktail_unbounded(testCase)
@@ -55,11 +55,11 @@ classdef test_cases_1a < matlab.unittest.TestCase
 
             % Don't think we need all return values to be exact here as
             % long as exitflag = -1. But why not...
-            testCase.verifyEqual(z,0, RelTol = 1e-5);
-            testCase.verifyEqual(x,[-12,-120,-120].', RelTol = 1e-5);
-            testCase.verifyEqual(pi,[0, 0, 0].', RelTol = 1e-5);
-            testCase.verifyEqual(ind,[3,4,5].', RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,-1, RelTol = 1e-5);
+            testCase.verifyEqual(z,0, AbsTol = 1e-5);
+            testCase.verifyEqual(x,[-12,-120,-120].', AbsTol = 1e-5);
+            testCase.verifyEqual(pi,[0, 0, 0].', AbsTol = 1e-5);
+            testCase.verifyEqual(ind,[3,4,5].', AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,-1, AbsTol = 1e-5);
         end
 
         function Assignment_1_Q3(testCase)
@@ -84,11 +84,11 @@ classdef test_cases_1a < matlab.unittest.TestCase
 
             [z,x,pi,ind,exitflag] = simplex(A,b,c,m,n,Bmatrix,indices);
 
-            testCase.verifyEqual(z,-64/3, RelTol = 1e-5);
-            testCase.verifyEqual(x,[4/3,8/3,4/3].', RelTol = 1e-5);
-            testCase.verifyEqual(pi,[-11/3, -14/3, 3].', RelTol = 1e-5);
-            testCase.verifyEqual(ind,[4,3,6].', RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+            testCase.verifyEqual(z,-64/3, AbsTol = 1e-5);
+            testCase.verifyEqual(x,[4/3,8/3,4/3].', AbsTol = 1e-5);
+            testCase.verifyEqual(pi,[-11/3, -14/3, 3].', AbsTol = 1e-5);
+            testCase.verifyEqual(ind,[4,3,6].', AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         end
 
         function Cocktail_degenerate(testCase)
@@ -115,8 +115,8 @@ classdef test_cases_1a < matlab.unittest.TestCase
 
             [z,x,pi,ind,exitflag] = simplex(A,b,c,m,n,Bmatrix,indices);
 
-            testCase.verifyEqual(z,-965, RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+            testCase.verifyEqual(z,-965, AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         end
     end
 end

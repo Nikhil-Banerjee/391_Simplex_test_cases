@@ -15,11 +15,11 @@ classdef test_cases_1c < matlab.unittest.TestCase
 
             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
 
-            testCase.verifyEqual(z,-290, RelTol = 1e-5);
-            testCase.verifyEqual(x,[40,120,80].', RelTol = 1e-5);
-            testCase.verifyEqual(pi,[-125/6, -1/3, 0].', RelTol = 1e-5);
-            testCase.verifyEqual(ind,[2,1,5].', RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+            testCase.verifyEqual(z,-290, AbsTol = 1e-5);
+            testCase.verifyEqual(x,[40,120,80].', AbsTol = 1e-5);
+            testCase.verifyEqual(pi,[-125/6, -1/3, 0].', AbsTol = 1e-5);
+            testCase.verifyEqual(ind,[2,1,5].', AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         end
 
         function cocktail_unbounded(testCase)
@@ -39,11 +39,11 @@ classdef test_cases_1c < matlab.unittest.TestCase
 
             % Don't think we need all return values to be exact here as
             % long as exitflag = -1. But why not...
-            %             testCase.verifyEqual(z,0, RelTol = 1e-5);
-            %             testCase.verifyEqual(x,[-12,-120,-120].', RelTol = 1e-5);
-            %             testCase.verifyEqual(pi,[0, 0, 0].', RelTol = 1e-5);
-            %             testCase.verifyEqual(ind,[3,4,5].', RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,-1, RelTol = 1e-5);
+            %             testCase.verifyEqual(z,0, AbsTol = 1e-5);
+            %             testCase.verifyEqual(x,[-12,-120,-120].', AbsTol = 1e-5);
+            %             testCase.verifyEqual(pi,[0, 0, 0].', AbsTol = 1e-5);
+            %             testCase.verifyEqual(ind,[3,4,5].', AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,-1, AbsTol = 1e-5);
         end
 
         function another_cocktail_unbounded(testCase)
@@ -80,11 +80,11 @@ classdef test_cases_1c < matlab.unittest.TestCase
 
             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
 
-            testCase.verifyEqual(z,-64/3, RelTol = 1e-5);
-            testCase.verifyEqual(x,[8/3,4/3,4/3].', RelTol = 1e-5);
-            testCase.verifyEqual(pi,[-11/3, -14/3, 3].', RelTol = 1e-5);
-            testCase.verifyEqual(ind,[3,6,4].', RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+            testCase.verifyEqual(z,-64/3, AbsTol = 1e-5);
+            testCase.verifyEqual(x,[8/3,4/3,4/3].', AbsTol = 1e-5);
+            testCase.verifyEqual(pi,[-11/3, -14/3, 3].', AbsTol = 1e-5);
+            testCase.verifyEqual(ind,[3,6,4].', AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         end
 
         function Assignment_1_Q4(testCase)
@@ -100,11 +100,11 @@ classdef test_cases_1c < matlab.unittest.TestCase
 
             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
 
-            testCase.verifyEqual(z,8/5, RelTol = 1e-5);
-            testCase.verifyEqual(x,[7/5,1/5].', RelTol = 1e-5);
-            testCase.verifyEqual(pi,[-1/5,2/5].', RelTol = 1e-5);
-            testCase.verifyEqual(ind,[3,5].', RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+            testCase.verifyEqual(z,8/5, AbsTol = 1e-5);
+            testCase.verifyEqual(x,[7/5,1/5].', AbsTol = 1e-5);
+            testCase.verifyEqual(pi,[-1/5,2/5].', AbsTol = 1e-5);
+            testCase.verifyEqual(ind,[3,5].', AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         end
 
         function Assignment_1_Q4_redundant_constraint(testCase)
@@ -121,10 +121,10 @@ classdef test_cases_1c < matlab.unittest.TestCase
 
             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
 
-            testCase.verifyEqual(z,8/5, RelTol = 1e-5);
-            testCase.verifyEqual(x,[7/5,1/5,0].', RelTol = 1e-5);
-            testCase.verifyEqual(ind,[3,5,8].', RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+            testCase.verifyEqual(z,8/5, AbsTol = 1e-5);
+            testCase.verifyEqual(x,[7/5,1/5,0].', AbsTol = 1e-5);
+            testCase.verifyEqual(ind,[3,5,8].', AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         end
 
         function Assignment_1_Q4_redundant_constraint_2(testCase)
@@ -141,11 +141,11 @@ classdef test_cases_1c < matlab.unittest.TestCase
 
             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
 
-            testCase.verifyEqual(z,8/5, RelTol = 1e-5);
-            %             testCase.verifyEqual(x,[7/5,1/5,0].', RelTol = 1e-5);
-            %             testCase.verifyEqual(pi,[-1/5,2/5].', RelTol = 1e-5);
-            %              testCase.verifyEqual(ind,[3,5,8].', RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+            testCase.verifyEqual(z,8/5, AbsTol = 1e-5);
+            %             testCase.verifyEqual(x,[7/5,1/5,0].', AbsTol = 1e-5);
+            %             testCase.verifyEqual(pi,[-1/5,2/5].', AbsTol = 1e-5);
+            %              testCase.verifyEqual(ind,[3,5,8].', AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         end
 
         function lecture_example(testCase)
@@ -236,11 +236,11 @@ classdef test_cases_1c < matlab.unittest.TestCase
 
             % Don't think we need all return values to be exact here as
             % long as exitflag = -1. But why not...
-            testCase.verifyEqual(z,-965, RelTol = 1e-5);
-            testCase.verifyEqual(x,[35,90,120].', RelTol = 1e-5);
-            testCase.verifyEqual(pi,[-87.5, 0, -0.75].', RelTol = 1e-5);
-            testCase.verifyEqual(ind,[1, 4, 2].', RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+            testCase.verifyEqual(z,-965, AbsTol = 1e-5);
+            testCase.verifyEqual(x,[35,90,120].', AbsTol = 1e-5);
+            testCase.verifyEqual(pi,[-87.5, 0, -0.75].', AbsTol = 1e-5);
+            testCase.verifyEqual(ind,[1, 4, 2].', AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         end
 
         function Assignment_1_Q5(testCase)
@@ -257,8 +257,8 @@ classdef test_cases_1c < matlab.unittest.TestCase
 
             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
 
-            testCase.verifyEqual(z,1.6, RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+            testCase.verifyEqual(z,1.6, AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         end
 
         function Tutorial_2_Q1(testCase)
@@ -277,11 +277,11 @@ classdef test_cases_1c < matlab.unittest.TestCase
 
             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
 
-            testCase.verifyEqual(z,-13, RelTol = 1e-5);
-            testCase.verifyEqual(x,[3,12,2,2].', RelTol = 1e-5);
-            testCase.verifyEqual(pi,[0,-0.25,-1/3,0].', RelTol = 1e-5);
-            testCase.verifyEqual(ind,[1,6,3,2].', RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+            testCase.verifyEqual(z,-13, AbsTol = 1e-5);
+            testCase.verifyEqual(x,[3,12,2,2].', AbsTol = 1e-5);
+            testCase.verifyEqual(pi,[0,-0.25,-1/3,0].', AbsTol = 1e-5);
+            testCase.verifyEqual(ind,[1,6,3,2].', AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         end
 
 
@@ -300,11 +300,11 @@ classdef test_cases_1c < matlab.unittest.TestCase
 
             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
 
-            testCase.verifyEqual(z,4, RelTol = 1e-5);
-            testCase.verifyEqual(x,[4,4,12].', RelTol = 1e-5);
-            testCase.verifyEqual(pi,[-7,5,3].', RelTol = 1e-5);
-            testCase.verifyEqual(ind,[3,5,6].', RelTol = 1e-5);
-            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+            testCase.verifyEqual(z,4, AbsTol = 1e-5);
+            testCase.verifyEqual(x,[4,4,12].', AbsTol = 1e-5);
+            testCase.verifyEqual(pi,[-7,5,3].', AbsTol = 1e-5);
+            testCase.verifyEqual(ind,[3,5,6].', AbsTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         end
         
         function Redundant_Online_Example(testCase)
@@ -321,14 +321,14 @@ classdef test_cases_1c < matlab.unittest.TestCase
 
             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
 
-            testCase.verifyEqual(z,35, RelTol = 1e-5); % not too sure about the answers tbh
-            testCase.verifyEqual(x,[5,0, 15].', RelTol = 1e-5);
-            % testCase.verifyEqual(pi,[-7,5,3].', RelTol = 1e-5); % ceebs
+            testCase.verifyEqual(z,35, AbsTol = 1e-5); % not too sure about the answers tbh
+            testCase.verifyEqual(x,[5,0, 15].', AbsTol = 1e-5);
+            % testCase.verifyEqual(pi,[-7,5,3].', AbsTol = 1e-5); % ceebs
             % calculating this
-            testCase.verifyEqual(ind,[1,6,4].', RelTol = 1e-5); % online indices are
+            testCase.verifyEqual(ind,[1,6,4].', AbsTol = 1e-5); % online indices are
             % 4, 1, 7 I'm guessing their method might be different? 6 and 7
             % are artificial anyway so 6 or 7 doesn't matter?
-            testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+            testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         end
 
         %          function Assignment_1_Q5_Primal(testCase)
@@ -362,8 +362,8 @@ classdef test_cases_1c < matlab.unittest.TestCase
         %
         %             [z,x,pi,ind,exitflag] = rsm(A,b,c,m,n);
         %
-        %              testCase.verifyEqual(z,-1.6, RelTol = 1e-5);
-        %              testCase.verifyEqual(exitflag,0, RelTol = 1e-5);
+        %              testCase.verifyEqual(z,-1.6, AbsTol = 1e-5);
+        %              testCase.verifyEqual(exitflag,0, AbsTol = 1e-5);
         %          end
     end
 end
